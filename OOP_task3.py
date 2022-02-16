@@ -105,11 +105,11 @@ class Reviewer(Mentor):
         return res
 
 
-def av_grade_all_students(course):
-    global students_list
+def av_grade_all_students(list_students, course):
+    # global students_list
     av_sum_grade = 0
     num_grades = 0
-    for student in students_list:
+    for student in list_students:
         # print(student.grades[course])
         # return f'{student.name}, {student.surname}\n'
         if course in student.grades:
@@ -121,11 +121,11 @@ def av_grade_all_students(course):
         return 0
 
 
-def av_grade_all_lecturers(course):
-    global lecturers_list
+def av_grade_all_lecturers(list_lecturers, course):
+    # global lecturers_list
     av_sum_grade = 0
     num_grades = 0
-    for lecturer in lecturers_list:
+    for lecturer in list_lecturers:
         if course in lecturer.grades:
             av_sum_grade += sum(lecturer.grades[course])
             num_grades += len(lecturer.grades[course])
@@ -223,8 +223,8 @@ cool_reviewer.rate_hw(student_2, 'Git', 10)
 
 students_list = [student_1, student_2]
 course_specific = 'Python'
-print(f'Средняя оценка за д/з по всем студентам в рамках курса {course_specific}: {av_grade_all_students(course_specific)}')
+print(f'Средняя оценка за д/з по всем студентам в рамках курса {course_specific}: {av_grade_all_students(students_list, course_specific)}')
 
 lecturers_list = [lecturer_1, lecturer_2]
 course_specific = 'Git'
-print(f'Средняя оценка за лекции всех лекторов в рамках курса {course_specific}: {av_grade_all_lecturers(course_specific)}')
+print(f'Средняя оценка за лекции всех лекторов в рамках курса {course_specific}: {av_grade_all_lecturers(lecturers_list, course_specific)}')
